@@ -6,7 +6,8 @@ go
 create table Books (
 	 id INT IDENTITY(1,1) PRIMARY KEY,
 	 name varchar(255) not null,
-	 author varchar(255) not null
+	 author varchar(255) not null,
+	 price int not null, 
 );
 
 create table Users (
@@ -26,3 +27,4 @@ create table UserBooks (
 
 select * from Users
 select * from Books
+select * from UserBooks
