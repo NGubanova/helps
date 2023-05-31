@@ -52,10 +52,17 @@ namespace bolshit
                     id = dataReader["id"].ToString();
                     role = dataReader["role"].ToString();
                     this.Hide();
+                    switch (role) {
+                        case "user":
                     MainWindow mainWindow = new MainWindow(Convert.ToInt32(id), role);
                     mainWindow.Show();
+                            break;
+                        case "admin":
+                            Admin admin = new Admin();
+                            admin.Show();
+                            break;
+                    }
                 }
-            
             }
             catch
             {

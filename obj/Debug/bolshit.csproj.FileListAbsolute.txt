@@ -18,3 +18,7 @@ C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\bolshit.exe
 C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\bolshit.pdb
 C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\Authorization.g.cs
 C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\Authorization.baml
+C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\Admin.g.cs
+C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\Admin.baml
+C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\Bag.g.cs
+C:\Users\Natikian\source\repos\bolshit\bolshit\obj\Debug\Bag.baml

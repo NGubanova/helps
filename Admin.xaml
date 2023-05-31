@@ -1,0 +1,56 @@
+﻿<Window x:Class="bolshit.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bolshit"
+        mc:Ignorable="d"
+        Title="Admin" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="1" Grid.ColumnSpan="4">
+            <TabControl TabStripPlacement="Top" DockPanel.Dock="Top">
+                <TabItem Header="Книги" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <DataGrid Name="BooksDg" Width="500" ItemsSource="{Binding}" SelectionChanged="BookDg_SelectionChanged"/>
+                        <StackPanel>
+                            <TextBox Name="ID_Book" Text="Номер книги"/>
+                            <TextBox Name="Name_Book" Text="Название книги"/>
+                            <TextBox Name="Author" Text="Автор"/>
+                            <TextBox Name="Price" Text="Цена"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="Add_book" Click="Add_book_Click" Content="Добавить"/>
+                                <Button Name="Edit_book" Click="Edit_book_Click" Content="Изменить"/>
+                                <Button Name="Delete_book" Click="Delete_book_Click" Content="Удалить"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Пользователи" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <DataGrid Name="UsersDg" Width="500" ItemsSource="{Binding}" SelectionChanged="UsersDg_SelectionChanged"/>
+                        <StackPanel>
+                            <TextBox Name="ID_User" Text="Номер пользователя"/>
+                            <TextBox Name="Login" Text="Логин"/>
+                            <TextBox Name="Role" Text="Роль"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="Add_user" Click="Add_user_Click" Content="Добавить"/>
+                                <Button Name="Edit_user" Click="Edit_user_Click"  Content="Изменить"/>
+                                <Button Name="Delete_user" Click="Delete_user_Click"  Content="Удалить"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Window>

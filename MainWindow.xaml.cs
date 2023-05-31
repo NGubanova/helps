@@ -26,12 +26,14 @@ namespace bolshit
         public SqlCommand command;
         public SqlDataAdapter adapter;
         DataSet dataSet;
+        public int ID;
 
         public MainWindow(int id, string role)
         {
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["BD.connectionString"].ConnectionString;
             List();
+            ID = id;
         }
 
         private void NoABC(object sender, TextCompositionEventArgs e) {
@@ -47,24 +49,40 @@ namespace bolshit
             adapter = new SqlDataAdapter(command);
             dataSet = new DataSet();
             adapter.Fill(dataSet, "Books");
-            Books books = new Books();
-            IList<Books> books1 = new List<Books>();
+            Book books = new Book();
+            IList<Book> books1 = new List<Book>();
 
             foreach (DataRow dr in dataSet.Tables[0].Rows) {
-                books1.Add(new Books
+                books1.Add(new Book
                 {
                     id = Convert.ToInt32(dr[0].ToString()),
                     name = dr[1].ToString(),
                     author = dr[2].ToString(),
+                    price = dr[3].ToString(),
                 });
                 listView.ItemsSource = books1;
             }
         }
 
-        public class Books {
-            public int id { get; set; }
-            public string name { get; set; }
-            public string author { get; set; }
+        private void orderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            var idBook = button.Tag;
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            command = new SqlCommand("Insert into UserBooks (userId, bookId) values ('" + ID + "', '"+ idBook +"')", connection);
+            dataReader = command.ExecuteReader();
+            dataReader.Read();
+            connection.Close();
+            MessageBox.Show("товар добавлен в корзину", "В корзине");
+            Bag.Visibility= Visibility.Visible;
+        }
+
+        private void Bag_Click(object sender, RoutedEventArgs e)
+        {
+            Bag bag = new Bag(ID);
+            bag.Owner = Application.Current.MainWindow;
+            bag.ShowDialog();
         }
     }
 }
