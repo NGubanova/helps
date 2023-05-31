@@ -1,0 +1,30 @@
+set ansi_nulls on 
+go 
+set quoted_identifier on 
+go 
+
+create table Books (
+	 id INT IDENTITY(1,1) PRIMARY KEY,
+	 name varchar(255) not null,
+	 author varchar(255) not null,
+	 price int not null, 
+);
+
+create table Users (
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	 login varchar(255) not null,
+	 password varchar(255) not null,
+	 role varchar(255) not null
+); 
+
+create table UserBooks (
+	userId int,
+	bookId int,
+	primary KEY (userId, bookId),
+	foreign key (userId) references Users(id),
+	foreign key (bookId) references Books(id),
+) 
+
+select * from Users
+select * from Books
+select * from UserBooks
