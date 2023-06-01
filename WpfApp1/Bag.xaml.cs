@@ -46,8 +46,12 @@ namespace WpfApp1
             var idBook = button.Tag;
             User user = db.Users.Find(ID);
             Book book = db.Books.Find(idBook);
-            book.Users.Remove(user);
+            var userDelBook = db.Users.Include(a => a.Books).FirstOrDefault(a => a.Id == ID);
+            userDelBook.Books.Remove(book);
             db.SaveChanges();
+            BagListOrder(ID);
+
+            // db.Users.Remove(user); обычное удаление
         }
     }
 }

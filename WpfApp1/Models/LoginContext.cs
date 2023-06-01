@@ -12,9 +12,9 @@ public partial class LoginContext : DbContext
         Database.EnsureCreated();
     }
 
-    public LoginContext(DbContextOptions<LoginContext> options)
-        : base(options)
+    public LoginContext(DbContextOptions<LoginContext> options) : base(options)
     {
+
     }
 
     public virtual DbSet<Book> Books { get; set; }
